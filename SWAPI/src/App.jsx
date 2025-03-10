@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom"
 import "./App.css"
-import Characters from "./components/characters"
+import Characters from "./components/Characters.jsx"
 import Planets from "./components/Planets"
 import Films from "./components/Films"
 import CharacterDetail from "./components/CharacterDetails"
