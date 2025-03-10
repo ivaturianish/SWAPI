@@ -1,20 +1,48 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import './App.css';
-import Characters from './components/characters.jsx'; // Import the Characters component
+import Characters from './components/characters';
+import Planets from './components/Planets';
+import Films from './components/Films';
+import CharacterDetail from './components/CharacterDetails';
+import PlanetDetail from './components/PlanetDetails';
+import FilmDetail from './components/FilmDetail';
 
 function App() {
   return (
     <Router>
-      <div>
-        <nav>
-          <Link to="/characters">Characters</Link>
-        </nav>
-        <Routes>
-          <Route path="/characters" element={<Characters />} />
-        </Routes>
+      <div className="app-container">
+        <header className="app-header">
+          <h1>Star Wars Database</h1>
+          <nav className="main-nav">
+            <Link to="/characters" className="nav-link">Characters</Link>
+            <Link to="/planets" className="nav-link">Planets</Link>
+            <Link to="/films" className="nav-link">Films</Link>
+          </nav>
+        </header>
+        
+        <main className="content">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/characters" element={<Characters />} />
+            <Route path="/characters/:id" element={<CharacterDetail />} />
+            <Route path="/planets" element={<Planets />} />
+            <Route path="/planets/:id" element={<PlanetDetail />} />
+            <Route path="/films" element={<Films />} />
+            <Route path="/films/:id" element={<FilmDetail />} />
+          </Routes>
+        </main>
       </div>
     </Router>
+  );
+}
+
+function Home() {
+  return (
+    <div className="home">
+      <h2>Welcome to the Star Wars Database</h2>
+      <p>Click on the links above to explore characters, planets, and films from the Star Wars universe.</p>
+    </div>
   );
 }
 

@@ -1,46 +1,55 @@
-// Characters.jsx
-import React, { useState, useEffect } from 'react';
+"use client"
+
+import { useState, useEffect } from "react"
+import { useNavigate } from "react-router-dom"
 
 const Characters = () => {
-  const [characters, setCharacters] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [characters, setCharacters] = useState([])
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState(null)
+  const navigate = useNavigate()
 
   useEffect(() => {
     const fetchCharacters = async () => {
       try {
-        const response = await fetch('http://localhost:9001/api/characters');
+        const response = await fetch("http://localhost:9001/api/characters")
         if (!response.ok) {
-          throw new Error('Network response was not ok');
+          throw new Error("Network response was not ok")
         }
-        const data = await response.json();
-        setCharacters(data);
+        const data = await response.json()
+        setCharacters(data)
       } catch (error) {
-        setError(error);
+        setError(error)
       } finally {
-        setLoading(false);
+        setLoading(false)
       }
-    };
+    }
 
-    fetchCharacters();
-  }, []);
+    fetchCharacters()
+  }, [])
 
-  if (loading) return <p>Loading characters...</p>;
-  if (error) return <p>Error loading characters: {error.message}</p>;
+  const handleCharacterClick = (id) => {
+    navigate(`/characters/${id}`)
+  }
+
+  if (loading) return <div className="loading">Loading characters...</div>
+  if (error) return <div className="error">Error loading characters: {error.message}</div>
 
   return (
     <div>
-      <h1>Characters</h1>
-      <ul>
-        {characters.map(character => (
-          <li key={character.id}>
-            <span>{character.name}</span>
-            <button onClick={() => alert(`Character: ${character.name}`)}>Show Name</button>
+      <h2>Star Wars Characters</h2>
+      <ul className="item-list">
+        {characters.map((character) => (
+          <li key={character.id} className="item-card" onClick={() => handleCharacterClick(character.id)}>
+            <div className="item-name">{character.name}</div>
+            <div>Gender: {character.gender}</div>
+            <div>Birth Year: {character.birth_year}</div>
           </li>
         ))}
       </ul>
     </div>
-  );
-};
+  )
+}
 
-export default Characters;
+export default Characters
+
