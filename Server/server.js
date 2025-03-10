@@ -1,4 +1,16 @@
-const express = require('express');
+import { MongoClient, ObjectId } from "mongodb";
+import dotenv from "dotenv";
+import cors from "cors";
+import express from "express"
+import { promises as fs} from "fs";
+
+
+dotenv.config();
+const url = process.env.MONGO_DB_URL;
+const dbName = process.env.MONGO_DB;
+const collectionName = process.env.MONGO_DB_COLLECTION;
+
+const express = require("express");
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -10,7 +22,17 @@ const films = [];
 const planets = [];
 
 app.get("/api/characters", (req, res) => {
-  res.json(characters);
+  try{
+     const client = await MongoClient.connect(url);
+     const db = client.db(dbName);
+     const collection = db.collection(collectionName);
+     const socks = await collection.find({}).toArray();
+     res.json(characters);
+  } catch (err) {
+    console.error("Error:", err)
+    res.status(500).send("No Force be with you!")
+  }
+ 
 });
 
 // Route for /api/films
