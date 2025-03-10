@@ -1,33 +1,96 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+
 .app-container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 1rem;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans",
+    "Helvetica Neue", sans-serif;
+  background-color: #0c1b33;
+  color: #ddd;
+  min-height: 100vh;
 }
 
 .app-header {
   margin-bottom: 2rem;
   padding-bottom: 1rem;
-  border-bottom: 1px solid #ccc;
+  border-bottom: 1px solid #444;
+  background-color: #000;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+.app-header h1 {
+  color: #ffe81f; /* Star Wars yellow */
+  text-align: center;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 .main-nav {
   display: flex;
   gap: 1.5rem;
   margin-top: 1rem;
+  justify-content: center;
 }
 
 .nav-link {
   text-decoration: none;
   font-weight: 600;
-  color: #2a6496;
+  color: #4bd5ee; /* Lightsaber blue */
   padding: 0.5rem 1rem;
   border-radius: 4px;
-  transition: background-color 0.2s;
+  transition: all 0.3s;
+  border: 1px solid #4bd5ee44;
 }
 
 .nav-link:hover {
-  background-color: #f0f0f0;
+  background-color: #4bd5ee22;
+  box-shadow: 0 0 8px #4bd5ee66;
+  transform: translateY(-2px);
 }
 
 .content {
@@ -43,37 +106,45 @@
 }
 
 .item-card {
-  border: 1px solid #ddd;
+  border: 1px solid #444;
   border-radius: 8px;
   padding: 1rem;
   transition: transform 0.2s, box-shadow 0.2s;
   cursor: pointer;
-  background-color: #f9f9f9;
+  background-color: #1a2738;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
 }
 
 .item-card:hover {
   transform: translateY(-3px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 15px rgba(75, 213, 238, 0.4);
+  border-color: #4bd5ee;
 }
 
 .item-name {
   font-weight: 600;
   margin-bottom: 0.5rem;
+  color: #ffe81f; /* Star Wars yellow */
 }
 
 .detail-container {
   max-width: 800px;
   margin: 0 auto;
-  background-color: #f9f9f9;
+  background-color: #1a2738;
   border-radius: 8px;
   padding: 2rem;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+  border: 1px solid #444;
 }
 
 .detail-header {
   margin-bottom: 1.5rem;
   padding-bottom: 0.5rem;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid #444;
+}
+
+.detail-header h2 {
+  color: #ffe81f; /* Star Wars yellow */
 }
 
 .detail-info {
@@ -84,7 +155,7 @@
 
 .detail-label {
   font-weight: 600;
-  color: #555;
+  color: #4bd5ee; /* Lightsaber blue */
 }
 
 .related-items {
@@ -94,7 +165,8 @@
 .related-items h3 {
   margin-bottom: 1rem;
   padding-bottom: 0.5rem;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid #444;
+  color: #ffe81f;
 }
 
 .related-list {
@@ -104,29 +176,74 @@
 }
 
 .related-item {
-  background-color: #e9e9e9;
+  background-color: #2a3749;
   padding: 0.5rem 1rem;
   border-radius: 4px;
   cursor: pointer;
-  transition: background-color 0.2s;
+  transition: all 0.2s;
+  border: 1px solid #4bd5ee44;
 }
 
 .related-item:hover {
-  background-color: #d9d9d9;
+  background-color: #4bd5ee22;
+  box-shadow: 0 0 8px #4bd5ee66;
 }
 
 .back-link {
   display: inline-block;
   margin-bottom: 1rem;
-  color: #2a6496;
+  color: #4bd5ee;
   text-decoration: none;
+  transition: all 0.2s;
+  padding: 0.4rem 0.8rem;
+  border-radius: 4px;
 }
 
 .back-link:hover {
-  text-decoration: underline;
+  background-color: #4bd5ee22;
+  box-shadow: 0 0 8px #4bd5ee66;
 }
 
-.loading, .error {
+.loading,
+.error {
+  text-align: center;
+  padding: 2rem;
+  color: #ffe81f;
+}
+
+.film-crawl {
+  margin: 2rem 0;
+  padding: 1.5rem;
+  background-color: #000;
+  border-radius: 8px;
+  border: 1px solid #444;
+}
+
+.film-crawl h3 {
+  color: #ffe81f;
+  margin-bottom: 1rem;
+}
+
+.film-crawl p {
+  color: #ffe81f;
+  font-family: "Arial", sans-serif;
+  line-height: 1.6;
+}
+
+.home {
   text-align: center;
   padding: 2rem;
 }
+
+.home h2 {
+  color: #ffe81f;
+  margin-bottom: 1.5rem;
+}
+
+/* Dark background for the body */
+body {
+  background-color: #0c1b33;
+  margin: 0;
+  padding: 0;
+}
+
