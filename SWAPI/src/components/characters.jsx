@@ -9,7 +9,7 @@ const Characters = () => {
   useEffect(() => {
     const fetchCharacters = async () => {
       try {
-        const response = await fetch('http://localhost:27017/api/characters.json');
+        const response = await fetch('http://localhost:9001/api/characters');
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }

@@ -1,8 +1,8 @@
-import { MongoClient, ObjectId } from "mongodb";
+import { MongoClient } from "mongodb";
 import dotenv from "dotenv";
 import cors from "cors";
 import express from "express"
-import { promises as fs} from "fs";
+// import { promises as fs} from "fs";
 
 
 dotenv.config();
@@ -10,7 +10,7 @@ const url = process.env.MONGO_DB_URL;
 const dbName = process.env.MONGO_DB;
 const collectionName = process.env.MONGO_DB_COLLECTION;
 
-const express = require("express");
+// const express = require("express");
 
 const app = express();
 app.use(cors());
@@ -27,8 +27,8 @@ app.get("/api/characters", async (req, res) => {
      const client = await MongoClient.connect(url);
      const db = client.db(dbName);
      const collection = db.collection(collectionName);
-     const socks = await collection.find({}).toArray();
-     res.json(characters);
+     const charactersArray = await collection.find({}).toArray();
+     res.json(charactersArray);
   } catch (err) {
     console.error("Error:", err)
     res.status(500).send("No Force be with you!")
@@ -37,10 +37,14 @@ app.get("/api/characters", async (req, res) => {
 });
 
 // Route for /api/films
-app.get("/api/films", (req, res) => {
+app.get("/api/films", (_req, res) => {
   res.json(films);
 });
-
+// Route for /api/films
+// Route for /api/planets
+app.get("/api/planets", (_req, res) => {
+  res.json(planets);
+});
 // Route for /api/planets
 app.get("/api/planets", (req, res) => {
   res.json(planets);
