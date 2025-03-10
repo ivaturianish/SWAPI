@@ -13,6 +13,7 @@ const collectionName = process.env.MONGO_DB_COLLECTION;
 const express = require("express");
 
 const app = express();
+app.use(cors());
 const port = process.env.PORT || 3000;
 
 const characters = [];
@@ -21,7 +22,7 @@ const films = [];
 
 const planets = [];
 
-app.get("/api/characters", (req, res) => {
+app.get("/api/characters", async (req, res) => {
   try{
      const client = await MongoClient.connect(url);
      const db = client.db(dbName);
