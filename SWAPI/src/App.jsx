@@ -7,6 +7,7 @@ import CharacterDetail from "./components/CharacterDetails"
 import PlanetDetail from "./components/PlanetDetails"
 import FilmDetail from "./components/FilmDetail"
 import SearchBar from "./components/SearchBar"
+import Favorites from "./components/Favorites"
 import { FavoritesProvider, useFavorites } from "./components/FavoritesContext"
 
 
@@ -51,6 +52,7 @@ function AppContent() {
           <Route path="/planets/:id" element={<PlanetDetail />} />
           <Route path="/films" element={<Films />} />
           <Route path="/films/:id" element={<FilmDetail />} />
+          <Route path="/favorites" element={<Favorites />} />
         </Routes>
       </main>
     </div>
