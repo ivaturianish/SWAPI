@@ -247,3 +247,145 @@ body {
   padding: 0;
 }
 
+/* Search Bar Styles */
+.search-container {
+  position: relative;
+  width: 100%;
+  max-width: 500px;
+  margin: 1rem auto;
+}
+
+.search-input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.search-input {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  border-radius: 30px;
+  border: 2px solid #4bd5ee44;
+  background-color: #0a1525;
+  color: #fff;
+  font-size: 1rem;
+  transition: all 0.3s;
+  outline: none;
+}
+
+.search-input:focus {
+  border-color: #4bd5ee;
+  box-shadow: 0 0 15px rgba(75, 213, 238, 0.4);
+}
+
+.search-input::placeholder {
+  color: #aaa;
+}
+
+.search-clear-btn {
+  position: absolute;
+  right: 10px;
+  background: none;
+  border: none;
+  color: #aaa;
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 0;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s;
+}
+
+.search-clear-btn:hover {
+  color: #fff;
+  background: none;
+  box-shadow: none;
+}
+
+.search-results {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background-color: #1a2738;
+  border-radius: 8px;
+  margin-top: 0.5rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+  border: 1px solid #444;
+  z-index: 100;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.search-results-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.search-result-item {
+  padding: 0.8rem 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #2a3749;
+  transition: background-color 0.2s;
+  text-align: left;
+}
+
+.search-result-item:last-child {
+  border-bottom: none;
+}
+
+.search-result-item:hover {
+  background-color: #2a3749;
+}
+
+.result-icon {
+  margin-right: 0.8rem;
+  font-size: 1.2rem;
+}
+
+.result-name {
+  flex: 1;
+  color: #ffe81f;
+  font-weight: 500;
+}
+
+.result-type {
+  color: #4bd5ee;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 0.2rem 0.5rem;
+  background-color: #0c1b33;
+  border-radius: 4px;
+}
+
+.search-loading,
+.search-no-results {
+  padding: 1rem;
+  text-align: center;
+  color: #aaa;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.6;
+  }
+}
+
+.search-loading {
+  animation: pulse 1.5s infinite;
+  color: #4bd5ee;
+}
+

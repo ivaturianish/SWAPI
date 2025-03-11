@@ -1,11 +1,12 @@
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom"
 import "./App.css"
-import Characters from "./components/Characters.jsx"
+import Characters from "./components/Characters"
 import Planets from "./components/Planets"
 import Films from "./components/Films"
 import CharacterDetail from "./components/CharacterDetails"
 import PlanetDetail from "./components/PlanetDetails"
 import FilmDetail from "./components/FilmDetail"
+import SearchBar from "./components/SearchBar"
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       <div className="app-container">
         <header className="app-header">
           <h1>Star Wars Database</h1>
+          <SearchBar />
           <nav className="main-nav">
             <Link to="/characters" className="nav-link">
               Characters
