@@ -2,12 +2,14 @@
 
 import { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
+import { useFavorites } from "./FavoritesContext"
 
 const Planets = () => {
   const [planets, setPlanets] = useState([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
   const navigate = useNavigate()
+  const { addFavorite, isFavorite, removeFavorite } = useFavorites()
 
   useEffect(() => {
     const fetchPlanets = async () => {
@@ -32,6 +34,16 @@ const Planets = () => {
     navigate(`/planets/${id}`)
   }
 
+  const handleFavoriteClick = (e, planet) => {
+    e.stopPropagation()
+
+    if (isFavorite("planets", planet.id)) {
+      removeFavorite("planets", planet.id)
+    } else {
+      addFavorite("planets", planet)
+    }
+  }
+
   if (loading) return <div className="loading">Loading planets...</div>
   if (error) return <div className="error">Error loading planets: {error.message}</div>
 
@@ -40,10 +52,19 @@ const Planets = () => {
       <h2>Star Wars Planets</h2>
       <ul className="item-list">
         {planets.map((planet) => (
-          <li key={planet.id} className="item-card" onClick={() => handlePlanetClick(planet.id)}>
-            <div className="item-name">{planet.name}</div>
-            <div>Climate: {planet.climate}</div>
-            <div>Terrain: {planet.terrain}</div>
+          <li key={planet.id} className="item-card">
+            <div className="item-content" onClick={() => handlePlanetClick(planet.id)}>
+              <div className="item-name">{planet.name}</div>
+              <div>Climate: {planet.climate}</div>
+              <div>Terrain: {planet.terrain}</div>
+            </div>
+            <button
+              className={`favorite-btn ${isFavorite("planets", planet.id) ? "is-favorite" : ""}`}
+              onClick={(e) => handleFavoriteClick(e, planet)}
+              title={isFavorite("planets", planet.id) ? "Remove from favorites" : "Add to favorites"}
+            >
+              {isFavorite("planets", planet.id) ? "★" : "+"}
+            </button>
           </li>
         ))}
       </ul>

@@ -7,39 +7,62 @@ import CharacterDetail from "./components/CharacterDetails"
 import PlanetDetail from "./components/PlanetDetails"
 import FilmDetail from "./components/FilmDetail"
 import SearchBar from "./components/SearchBar"
+import { FavoritesProvider, useFavorites } from "./components/FavoritesContext"
+
+
+const NavBar = () => {
+  const { getFavoritesCount } = useFavorites()
+  const favoritesCount = getFavoritesCount()
+
+  return (
+    <nav className="main-nav">
+      <Link to="/characters" className="nav-link">
+        Characters
+      </Link>
+      <Link to="/planets" className="nav-link">
+        Planets
+      </Link>
+      <Link to="/films" className="nav-link">
+        Films
+      </Link>
+      <Link to="/favorites" className="nav-link favorites-link">
+        Favorites
+        {favoritesCount > 0 && <span className="favorites-count">{favoritesCount}</span>}
+      </Link>
+    </nav>
+  )
+}
+
+function AppContent() {
+  return (
+    <div className="app-container">
+      <header className="app-header">
+        <h1>Star Wars Database</h1>
+        <SearchBar />
+        <NavBar />
+      </header>
+
+      <main className="content">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/characters" element={<Characters />} />
+          <Route path="/characters/:id" element={<CharacterDetail />} />
+          <Route path="/planets" element={<Planets />} />
+          <Route path="/planets/:id" element={<PlanetDetail />} />
+          <Route path="/films" element={<Films />} />
+          <Route path="/films/:id" element={<FilmDetail />} />
+        </Routes>
+      </main>
+    </div>
+  )
+}
 
 function App() {
   return (
     <Router>
-      <div className="app-container">
-        <header className="app-header">
-          <h1>Star Wars Database</h1>
-          <SearchBar />
-          <nav className="main-nav">
-            <Link to="/characters" className="nav-link">
-              Characters
-            </Link>
-            <Link to="/planets" className="nav-link">
-              Planets
-            </Link>
-            <Link to="/films" className="nav-link">
-              Films
-            </Link>
-          </nav>
-        </header>
-
-        <main className="content">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/characters" element={<Characters />} />
-            <Route path="/characters/:id" element={<CharacterDetail />} />
-            <Route path="/planets" element={<Planets />} />
-            <Route path="/planets/:id" element={<PlanetDetail />} />
-            <Route path="/films" element={<Films />} />
-            <Route path="/films/:id" element={<FilmDetail />} />
-          </Routes>
-        </main>
-      </div>
+      <FavoritesProvider>
+        <AppContent />
+      </FavoritesProvider>
     </Router>
   )
 }

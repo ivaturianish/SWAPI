@@ -85,12 +85,32 @@
   border-radius: 4px;
   transition: all 0.3s;
   border: 1px solid #4bd5ee44;
+  position: relative;
 }
 
 .nav-link:hover {
   background-color: #4bd5ee22;
   box-shadow: 0 0 8px #4bd5ee66;
   transform: translateY(-2px);
+}
+
+.favorites-link {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.favorites-count {
+  background-color: #ffe81f;
+  color: #000;
+  font-size: 0.75rem;
+  font-weight: bold;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .content {
@@ -113,6 +133,7 @@
   cursor: pointer;
   background-color: #1a2738;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  position: relative;
 }
 
 .item-card:hover {
@@ -121,10 +142,114 @@
   border-color: #4bd5ee;
 }
 
+.item-content {
+  width: 100%;
+  height: 100%;
+}
+
 .item-name {
   font-weight: 600;
   margin-bottom: 0.5rem;
   color: #ffe81f; /* Star Wars yellow */
+}
+
+.favorite-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background-color: #2a3749;
+  color: #fff;
+  border: 1px solid #4bd5ee44;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 1.2rem;
+  transition: all 0.2s;
+  z-index: 5;
+  padding: 0;
+  line-height: 1;
+}
+
+.favorite-btn:hover {
+  background-color: #4bd5ee22;
+  box-shadow: 0 0 8px #4bd5ee66;
+  transform: scale(1.1);
+}
+
+.favorite-btn.is-favorite {
+  background-color: #ffe81f;
+  color: #000;
+  border-color: #ffe81f;
+}
+
+.favorite-item {
+  position: relative;
+}
+
+.remove-favorite-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background-color: #ff4444;
+  color: #fff;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 1.2rem;
+  transition: all 0.2s;
+  z-index: 5;
+  padding: 0;
+  line-height: 1;
+}
+
+.remove-favorite-btn:hover {
+  background-color: #ff6666;
+  transform: scale(1.1);
+}
+
+.favorites-container {
+  padding: 1rem;
+}
+
+.favorites-container h2 {
+  color: #ffe81f;
+  margin-bottom: 2rem;
+}
+
+.favorites-section {
+  margin-bottom: 2rem;
+}
+
+.favorites-section h3 {
+  color: #4bd5ee;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #444;
+}
+
+.no-favorites {
+  text-align: center;
+  padding: 3rem;
+  background-color: #1a2738;
+  border-radius: 8px;
+  border: 1px dashed #444;
+  margin: 2rem auto;
+  max-width: 600px;
+}
+
+.no-favorites p:first-child {
+  font-size: 1.2rem;
+  color: #ffe81f;
+  margin-bottom: 1rem;
 }
 
 .detail-container {
